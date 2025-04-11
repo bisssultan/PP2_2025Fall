@@ -3,13 +3,14 @@ class Shape:
         return 0
 
 class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
     def area(self):
-        length = float(input("length: "))
-        width = float(input("width: "))
-        return length * width 
+        return self.length * self.width
 
-shape = Shape()
-print("Sh area:", shape.area())
-
-rectangle = Rectangle()
-print("R area:", rectangle.area())
+length = float(input("Length:"))
+width = float(input("width:"))
+rectangle = Rectangle(length, width)
+print("Rectangle area:", rectangle.area())

@@ -1,26 +1,41 @@
-import math
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
 
-class Point:
-    def move(self):
-        self.x = float(input("Введите x: "))
-        self.y = float(input("Введите y: "))
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Вы внесли {amount}. Новый баланс: {self.balance}")
+        else:
+            print("Сумма депозита должна быть больше 0.")
 
-    def show(self):
-        print(f"Точка: ({self.x}, {self.y})")
+    def withdraw(self, amount):
+        if amount > 0:
+            if amount <= self.balance:
+                self.balance -= amount
+                print(f"Вы сняли {amount}. Новый баланс: {self.balance}")
+            else:
+                print("Недостаточно средств для снятия.")
+        else:
+            print("Сумма снятия должна быть больше 0.")
 
-    def dist(self, other):
-        return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
+owner = input("Введите имя владельца счета: ")
+initial_balance = float(input("Введите начальный баланс счета: "))
 
-#первaя точка
-p1 = Point()
-p1.move()
+account = BankAccount(owner, initial_balance)
 
-#вторaя точкa
-p2 = Point()
-p2.move()
-
-#точки
-p1.show()
-p2.show()
-
-print("Расстояние между точками:", p1.dist(p2))
+while True:
+    action = input("Вы хотите внести или снять деньги? (введите для депозита '1' или для снятия '2', или '3' для выхода): ").lower()
+    
+    if action == '1':
+        amount = float(input("Введите сумму для депозита: "))
+        account.deposit(amount)
+    elif action == '2':
+        amount = float(input("Введите сумму для снятия: "))
+        account.withdraw(amount)
+    elif action == '3':
+        print("Завершаю программу.")
+        break
+    else:
+        print("Неверная команда. Пожалуйста, введите 'депозит', 'снятие' или 'выход'.")

@@ -3,12 +3,15 @@ class Shape:
         return 0
 
 class Square(Shape):
+    def __init__(self, length):
+        self.length = length
+    
     def area(self):
-        length = float(input("len: "))
-        return length ** 2 
+        return self.length * self.length
 
 shape = Shape()
-print("Sh area:", shape.area())
+print("Shape area:", shape.area())
 
-square = Square()
-print("Sq area:", square.area())
+length = float(input("Length:"))
+square = Square(length)
+print("Square area:", square.area())
