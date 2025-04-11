@@ -1,0 +1,10 @@
+print(10 > 9)
+print(10 == 9)
+print(10 < 9)
+
+bool(False)
+bool(0)
+bool("")
+bool(())
+bool([])
+bool({})
